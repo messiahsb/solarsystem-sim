@@ -8,10 +8,16 @@ WINDOW = pygame.display.set_mode((WIDTH, HEIGHT))
 
 pygame.display.set_caption("Solar System Simulation")
 
+
+
 def main():
     run = True
+    clock =pygame.time.Clock()
 
     while run:
+        clock.tick(60)
+        WINDOW.fill()
+        pygame.display.update()
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 run = False
