@@ -7,7 +7,11 @@ class Planet:
     self.color = color
     self.velocity = (0,0)
 
+    
+
     self.sun = False
+    self.distance_to_sun = 0
+    self.orbit = []
 
     def set_mass(self, mass):
       self.__mass = mass
