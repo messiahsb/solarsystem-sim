@@ -1,14 +1,38 @@
+import bodies
+YELLOW = (255,255, 0)
+BLACK = (0,0,0)
+BLUE  = (0,0, 255)
 class SolarSystem:
-    def __init__(self, width, height):
-        self.solar_system = turtle.Screen()
-        self.solar_system.tracer(0)
-        self.solar_system.setup(width, height)
-        self.solar_system.bgcolor("black")
+    sun = bodies.Bodies((1.989* 10**30), 30, (0,0), YELLOW)
+    #r = 695700
+    earth = bodies.Bodies((5.9722* 10**24), 10, (-1*bodies.Bodies.ASTRONIMCAL_UNITS,0), BLUE)
+    # r = 6371
 
-        self.bodies = []
+    START_TIME = 0
+    TIME = START_TIME
+  
+    END_TIME = 3600*24 * 365 * 10
+
+    def __init__(self):
+        self.planets = [self.sun, self.earth]
         
     def add_body(self, body):
-        self.bodies.append(body)
-        
+        self.planets.append(body)
+
     def remove_body(self, body):
-        self.bodies.remove(body)
+        self.planets.remove(body)
+    
+    def calc_position():
+        return -1
+    
+    def calc_acceleration():
+        return -1
+
+    def calc_velocity():
+        return -1
+    
+    def calc_force(gravity, massOne, massTwo, distance):
+        #F = Gm1m2/r.sqr
+        return -1
+    
+        
