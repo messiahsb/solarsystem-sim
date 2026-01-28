@@ -24,12 +24,13 @@ def main():
 
     while run:
         clock.tick(60)
-        #WINDOW.fill(BLACK)
+        #INDOW.fill(BLACK)
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 run = False
                 
         for planet in solsys.planets:
+            planet.update_position(solsys.planets)
             planet.draw(WINDOW, WIDTH, HEIGHT)
 
         pygame.display.update()  
