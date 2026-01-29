@@ -6,7 +6,7 @@ class Bodies:
 
   #gravitational constant
   G = 6.6743e-11 #(m/kg)^2
-  SCALE = 250/ASTRONIMCAL_UNITS #1AU = 100 pixels
+  SCALE = 250/ASTRONIMCAL_UNITS #1AU = 250 pixels
   TIMESTEP = 3600*24 # 1 day
 
   def __init__(self, mass, radius, position, color):
@@ -53,9 +53,9 @@ class Bodies:
   
   def calc_fattraction(self, body2):
         #F = Gm1m2/r.sqr
-        p2_x, p2_y = x, y = body2.position
-        p1_x, p1_y = x, y = self.position
-        distanceX = p2_x - p1_y
+        p2_x, p2_y = body2.position
+        p1_x, p1_y = self.position
+        distanceX = p2_x - p1_x
         distanceY = p2_y - p1_y
         distance = math.sqrt(distanceX**2 + distanceY**2)
         if body2.sun:
@@ -71,23 +71,23 @@ class Bodies:
     #rethink this code, maybe it can go in 
     #system.py since it loops through a list of planets
   def update_position(self, planets):
-     total_fx, total_fy = 0, 0
+    total_fx, total_fy = 0, 0
 
-     for planet in planets:
+    for planet in planets:
         if self == planet:
-           continue
+            continue
         force_x, force_y = self.calc_fattraction(planet)
         total_fx += force_x
         total_fy += force_y
-        #f=ma = a=f/m && a = vf-vi/t -- v=d/t  vf = vi + at 
-        # -- vf = vi + f/m * t
-        self.velocity[0] += total_fx / self.mass * self.TIMESTEP
-        self.velocity[1] = total_fy / self.mass * self.TIMESTEP
+    #f=ma = a=f/m && a = vf-vi/t -- v=d/t  vf = vi + at 
+    # -- vf = vi + f/m * t
+    self.velocity[0] += total_fx / self.mass * self.TIMESTEP
+    self.velocity[1] += total_fy / self.mass * self.TIMESTEP
 
-        #s = dt
-        self.position[0] += self.velocity[0] * self.TIMESTEP
-        self.position[1] += self.velocity[1] * self.TIMESTEP
+    #s = dt
+    self.position[0] += self.velocity[0] * self.TIMESTEP
+    self.position[1] += self.velocity[1] * self.TIMESTEP
 
-        self.orbit.append(self.position)
+    self.orbit.append(self.position)
   
         

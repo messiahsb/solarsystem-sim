@@ -24,7 +24,7 @@ def main():
 
     while run:
         clock.tick(60)
-        #INDOW.fill(BLACK)
+        WINDOW.fill(BLACK)
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 run = False

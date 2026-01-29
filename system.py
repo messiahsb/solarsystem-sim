@@ -4,6 +4,7 @@ BLACK = (0,0,0)
 BLUE  = (0,0, 255)
 class SolarSystem:
     sun = bodies.Bodies((1.989* 10**30), 30, [0,0], YELLOW)
+    sun.sun = True
     #r = 695700
     earth = bodies.Bodies((5.9722* 10**24), 10, [-1*bodies.Bodies.ASTRONIMCAL_UNITS,0], BLUE)
     earth.velocity[1] = 29.783 * 1000
